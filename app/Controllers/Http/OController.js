@@ -20,7 +20,7 @@ class OController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    return O.query().paginate()
+    return O.query().with('aluno').with('suporte').with('equipamento').fetch()
   }
 
   /**
@@ -48,7 +48,7 @@ class OController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    return await O.query().where('id' , params.id).first()
+    return await O.query().with('aluno').with('suporte').with('equipamento').where('id' , params.id).first()
   }
 
   /**
@@ -62,10 +62,10 @@ class OController {
    */
 
   async update ({ params, request, response }) {
-    const RegisterFields = O.getRegisterFields()
+    const RegisterFields = O.getCamposCadastro()
     const dados = request.only(RegisterFields)
 
-    const o = await O.query().where('id', params.id).first()
+    const o = await O.query().with('aluno').with('suporte').with('equipamento').where('id', params.id).first()
     o.merge(dados)
     await o.save()
 

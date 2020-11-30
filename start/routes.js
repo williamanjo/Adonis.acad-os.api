@@ -22,6 +22,9 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
+Route.post('/users', 'UserController.store')
+Route.post('/users/token', 'UserController.token')
+
 Route.resource('/alunos','AlunoController').apiOnly
 Route.resource('/turmas','TurmaController').apiOnly
 Route.resource('/setores','SetorController').apiOnly

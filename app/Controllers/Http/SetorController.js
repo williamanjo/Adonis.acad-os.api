@@ -20,7 +20,7 @@ class SetorController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    return Setor.query().paginate()
+    return Setor.query().with('equipamentos').fetch()
   }
 
   /**
@@ -48,7 +48,7 @@ class SetorController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    return await Setor.query().where('id' , params.id).first()
+    return await Setor.query().with('equipamentos').where('id' , params.id).first()
   }
 
   /**
@@ -65,7 +65,7 @@ class SetorController {
     const camposCadastro = Setor.getCamposCadastro()
     const dados = request.only(camposCadastro)
 
-    const setor = await Setor.query().where('id', params.id).first()
+    const setor = await Setor.query().with('equipamentos').where('id', params.id).first()
     setor.merge(dados)
     await setor.save()
 

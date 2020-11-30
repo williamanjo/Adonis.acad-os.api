@@ -16,6 +16,15 @@ class O extends Model {
             ]
         
     }
+    aluno(){
+        return this.belongsTo('App/Models/Aluno')
+    }
+    equipamento(){
+        return this.belongsTo('App/Models/Equipamento')
+    }
+    suporte(){
+        return this.belongsTo('App/Models/Suporte')
+    }
 
 }
 

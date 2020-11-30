@@ -8,6 +8,12 @@ class Aluno extends Model {
         return ['nome','email','senha','sexo','cpf','data_nascimento','turno','curso','turma_id']
 
     }
+    turma(){
+        return this.belongsTo('App/Models/Turma')
+    }
+    os(){
+        return this.hasMany('App/Models/O')
+    }
 }
 
 module.exports = Aluno

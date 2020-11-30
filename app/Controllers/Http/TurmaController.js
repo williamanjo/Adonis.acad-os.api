@@ -20,7 +20,7 @@ class TurmaController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    return Turma.query().paginate()
+    return Turma.query().with('alunos').fetch()
   }
 
   /**
@@ -48,7 +48,7 @@ class TurmaController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    return await Turma.query().where('id' , params.id).first()
+    return await Turma.query().with('alunos').where('id' , params.id).first()
   }
 
   /**

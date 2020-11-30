@@ -8,6 +8,9 @@ class Marca extends Model {
         return ['nome']
         
     }
+    equipamentos(){
+        return this.hasMany('App/Models/Equipamento')
+    }
 }
 
 module.exports = Marca

@@ -5,8 +5,11 @@ const Model = use('Model')
 
 class Suporte extends Model {
     static getCamposCadastro(){
-        return ['nome','email','senha','sexo','cpf','data_nascimento','data_admissao','turno_de_trabalho']
+        return ['nome','email','senha','sexo','cpf','data_nascimento','data_admissao']
         
+    }
+    os(){
+        return this.hasMany('App/Models/O')
     }
 }
 

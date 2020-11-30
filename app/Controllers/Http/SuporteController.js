@@ -20,7 +20,7 @@ class SuporteController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    return Suporte.query().paginate()
+    return Suporte.query().with('os').paginate()
   }
 
   /**
@@ -48,7 +48,7 @@ class SuporteController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    return await Suporte.query().where('id' , params.id).first()
+    return await Suporte.query().with('os').where('id' , params.id).first()
   }
 
   /**

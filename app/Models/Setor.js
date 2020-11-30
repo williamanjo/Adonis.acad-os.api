@@ -8,6 +8,9 @@ class Setor extends Model {
         return ['sigla']
         
     }
+    equipamentos(){
+        return this.hasMany('App/Models/Equipamento')
+    }
 }
 
 module.exports = Setor

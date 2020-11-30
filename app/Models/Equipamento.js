@@ -8,6 +8,12 @@ class Equipamento extends Model {
         return ['tipo','setor_id','marca_id']
         
     }
+    setor(){
+        return this.belongsTo('App/Models/Setor')
+    }
+    marca(){
+        return this.belongsTo('App/Models/Marca')
+    }
 }
 
 module.exports = Equipamento

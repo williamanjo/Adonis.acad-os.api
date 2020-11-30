@@ -20,7 +20,7 @@ class AlunoController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    return Aluno.query().paginate()
+    return Aluno.query().with('turma').with('os').fetch()
   }
 
   /**
@@ -48,7 +48,7 @@ class AlunoController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    return await Aluno.query().where('id' , params.id).first()
+    return await Aluno.query().with('turma').with('os').where('id' , params.id).first()
   }
 
   /**
@@ -65,7 +65,7 @@ class AlunoController {
     const camposCadastro = Aluno.getCamposCadastro()
     const dados = request.only(camposCadastro)
 
-    const aluno = await Aluno.query().where('id', params.id).first()
+    const aluno = await Aluno.query().with('turma').with('os').where('id', params.id).first()
     aluno.merge(dados)
     await aluno.save()
 

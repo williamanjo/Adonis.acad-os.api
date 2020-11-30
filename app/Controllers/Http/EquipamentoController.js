@@ -20,7 +20,7 @@ class EquipamentoController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    return Equipamento.query().paginate()
+    return Equipamento.query().with('marca').with('setor').fetch()
   }
 
   /**

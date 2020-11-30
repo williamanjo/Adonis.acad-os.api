@@ -8,6 +8,9 @@ class Turma extends Model {
         return ['sigla']
         
     }
+    alunos(){
+        return this.hasMany('App/Models/Aluno')
+    }
 }
 
 module.exports = Turma

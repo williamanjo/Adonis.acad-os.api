@@ -20,7 +20,7 @@ class MarcaController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    return Marca.query().paginate()
+    return Marca.query().with('equipamentos').fetch()
   }
 
   /**
